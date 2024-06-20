@@ -1,8 +1,11 @@
 # Automate_Test
+Instructions:
 
-Use Python with Robot or Cucumber.
+1.Fork this repo.
 
-Create a branch and name it with your "{firstname_lastname}_challenge" Make sure to update your README to show how to run your scripts Fulfill the following two scenarios Once complete push your branch up
+2.Use Python with Robot or Cucumber.
+
+3.Create a branch and name it with your "{firstname_lastname}_challenge" Make sure to update your README to show how to run your scripts Fulfill the following two scenarios Once complete push your branch up
 
 Feature: Automate As an Engr. 
 
