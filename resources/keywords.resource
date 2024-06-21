@@ -55,10 +55,15 @@ Verify User Is Created
 
 Delete User 
     [Arguments]    ${user_name}
-    Search By User Name    ${user_name}
+    #Search By User Name    ${user_name}
     Wait Until Element Is Visible    //*[contains(@class, 'data-row')]//*[contains(@class, 'data-cell') and normalize-space()='${user_name}']
     Click Element    //*[contains(@class, 'data-row')]//*[contains(@class, 'data-cell') and normalize-space()='${user_name}']/following-sibling::*//*[contains(@class, 'remove')]
     ${confirmDialog} =    Set Variable    //*[contains(@class, 'modal-header')]//*[normalize-space()='Confirmation Dialog']
     Wait Until Element Is Visible    ${confirmDialog}
     Click Button    //*[contains(@class, 'modal-')]//button[normalize-space()='OK']
+    Wait Until Element Is Not Visible    //*[contains(@class, 'data-row')]//*[contains(@class, 'data-cell') and normalize-space()='${user_name}']
+
+Verify User Is Deleted
+    [Arguments]    ${user_name}
+    Search By User Name    ${user_name}
     Wait Until Element Is Not Visible    //*[contains(@class, 'data-row')]//*[contains(@class, 'data-cell') and normalize-space()='${user_name}']
