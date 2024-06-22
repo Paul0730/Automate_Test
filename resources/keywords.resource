@@ -4,7 +4,7 @@ Resource    variables.resource
 
 *** Keywords ***
 Open Website
-    Open Browser    url=http://www.way2automation.com/angularjs-protractor/webtables/    browser=Edge
+    Open Browser    url=http://www.way2automation.com/angularjs-protractor/webtables/    browser=Chrome
     Maximize Browser Window
     Wait Until Element Is Visible    //*[contains(@class, 'smart-table')]//*[@ng-model='searchValue']
 
