@@ -1,14 +1,16 @@
 *** Settings ***
-Resource    ./resources/keywords.resource
+Resource    ../resources/keywords.resource
 Suite Setup    Open Website
 Suite Teardown    Close Browser
 
 *** Test Cases ***
 Verify Add User
     Add User    ${test_user}
-    Verify User Is Created    testUser
-    [Teardown]    Delete User    testUser
+    User Should Be Visible On Data Table    testUser
+    [Teardown]    Run Keywords    Delete User    testUser
+    ...                    AND    Clear Search Bar
 
 Verify Delete User
     Delete User     novak
-    Verify User Is Deleted    novak
+    User Should Not Be Visible On Data Table    novak
+    [Teardown]    Clear Search Bar

@@ -48,14 +48,14 @@ Search By User Name
     ${searchBar} =    Set Variable    //*[contains(@class, 'smart-table')]//*[@ng-model='searchValue']
     Input Text    ${searchBar}    ${text}
 
-Verify User Is Created
+User Should Be Visible On Data Table
     [Arguments]    ${user_name}
     Search By User Name    ${user_name}
     Wait Until Element Is Visible    //*[contains(@class, 'data-row')]//*[contains(@class, 'data-cell') and normalize-space()='${user_name}']
 
 Delete User 
     [Arguments]    ${user_name}
-    #Search By User Name    ${user_name}
+    #Search By User Name    ${user_name}    #Potential bug where if you search first, sometimes the given datas shown on the table can't be deleted.
     Wait Until Element Is Visible    //*[contains(@class, 'data-row')]//*[contains(@class, 'data-cell') and normalize-space()='${user_name}']
     Click Element    //*[contains(@class, 'data-row')]//*[contains(@class, 'data-cell') and normalize-space()='${user_name}']/following-sibling::*//*[contains(@class, 'remove')]
     ${confirmDialog} =    Set Variable    //*[contains(@class, 'modal-header')]//*[normalize-space()='Confirmation Dialog']
@@ -63,7 +63,10 @@ Delete User
     Click Button    //*[contains(@class, 'modal-')]//button[normalize-space()='OK']
     Wait Until Element Is Not Visible    //*[contains(@class, 'data-row')]//*[contains(@class, 'data-cell') and normalize-space()='${user_name}']
 
-Verify User Is Deleted
+Clear Search Bar
+    Search By User Name    ${SPACE}
+
+User Should Not Be Visible On Data Table
     [Arguments]    ${user_name}
     Search By User Name    ${user_name}
     Wait Until Element Is Not Visible    //*[contains(@class, 'data-row')]//*[contains(@class, 'data-cell') and normalize-space()='${user_name}']
